@@ -16,9 +16,7 @@ import 'rxjs/add/operator/pluck';
   `
 })
 export class MailFolderComponent {
-  
   messages: Observable<Mail[]> = this.route.data.pluck('messages');
   title: Observable<string> = this.route.params.pluck('name');
-
   constructor(private route: ActivatedRoute) {}
 }
