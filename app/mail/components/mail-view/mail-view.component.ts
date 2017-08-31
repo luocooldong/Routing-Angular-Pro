@@ -6,7 +6,6 @@ import 'rxjs/add/operator/pluck';
 
 import { Mail } from '../../models/mail.interface';
 
-
 @Component({
   selector: 'mail-view',
   styleUrls: ['mail-view.component.scss'],
