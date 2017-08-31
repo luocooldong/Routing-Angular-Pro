@@ -7,17 +7,21 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { MailModule } from './mail/mail.module';
+import { AuthMoudle } from './auth/auth.module';
+import { AuthGuard } from './auth/auth.guard';
+
 
 import { AppComponent } from './app.component';
 
-export class CustomPreload implements PreloadingStrategy {
-  preload(route: Route, fn: () => Observable<any>): Observable<any> {
-    return route.data && route.data.preload ? fn() : Observable.of(null);
-  }
-}
+// export class CustomPreload implements PreloadingStrategy {
+//   preload(route: Route, fn: () => Observable<any>): Observable<any> {
+//     return route.data && route.data.preload ? fn() : Observable.of(null);
+//   }
+// }
 
 export const ROUTES: Routes = [
-  { path: 'dashboard', data: { preload: true }, loadChildren: './dashboard/dashboard.module#DashboardModule' },
+  // { path: 'dashboard', data: { preload: true }, loadChildren: './dashboard/dashboard.module#DashboardModule' },
+  { path: 'dashboard', canLoad: [AuthGuard], loadChildren: './dashboard/dashboard.module#DashboardModule' },
   { path: '**', redirectTo: 'mail/folder/inbox' }
 ];
 
@@ -25,14 +29,12 @@ export const ROUTES: Routes = [
   declarations: [
     AppComponent
   ],
-  providers: [
-    CustomPreload
-  ],
   imports: [
     BrowserModule,
     HttpModule,
     MailModule,
-    RouterModule.forRoot(ROUTES, { preloadingStrategy: CustomPreload })
+    AuthMoudle,
+    RouterModule.forRoot(ROUTES)
   ],
   bootstrap: [
     AppComponent
