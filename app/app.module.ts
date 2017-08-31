@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { MailModule } from './mail/mail.module';
-import { AuthMoudle } from './auth/auth.module';
+import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './auth/auth.guard';
 
 
@@ -33,7 +33,7 @@ export const ROUTES: Routes = [
     BrowserModule,
     HttpModule,
     MailModule,
-    AuthMoudle,
+    AuthModule,
     RouterModule.forRoot(ROUTES)
   ],
   bootstrap: [

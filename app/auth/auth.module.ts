@@ -8,6 +8,6 @@ import { NgModule } from '@angular/core';
         AuthGuard
     ]
 })
-export class AuthMoudle{
+export class AuthModule{
 
 }
